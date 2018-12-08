@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Commands",
+    "version": "0.0.1",
+    "description": "",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },      
+    "commands": {
+          "open_swagger_inspector": {
+            "suggested_key": {
+              "default": "Ctrl+I"
+            },
+            "description": "Open Swagger Inspector"
+          },
+          "open_swaggerhub": {
+            "suggested_key": {
+              "windows": "Ctrl+Shift+S",
+              "mac": "Command+Shift+S",
+              "linux": "Ctrl+Shift+S"
+            },
+	    "description": "Opens SwaggerHub"
+          }
+    }
+}
+

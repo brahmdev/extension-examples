@@ -1,0 +1,13 @@
+  {
+    "name": "SwaggerHub API Search",
+    "description": "Add support to the omnibox to search the SwaggerHub API",
+    "omnibox": {
+      "keyword": "swaggerhub"
+     },     
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "version": "1.0",
+    "minimum_chrome_version": "9",
+    "manifest_version": 2
+  }

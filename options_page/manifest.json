@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Persistent_Test",
+    "version": "0.0.1",
+    "description": "",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },      
+    "permissions": ["storage"],
+    "options_ui": {
+    	"page": "options.html",
+    	"open_in_tab": false
+    }
+}
