@@ -12,7 +12,7 @@ $(document).ready(function () {
 		$('#apps-modal').modal('toggle');
 	});
 
-	$('#sidebar').toggleClass('active');
+	//$('#sidebarCollapse').trigger('click');
 	
 	//console.log("**************** ",cjgShortcuts.mostPopular);
 	//console.log("List**********	 ",cjgShortcuts.list["59"]);
