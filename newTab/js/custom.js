@@ -46,32 +46,31 @@ var getAllCallback = function(list) {
 
 var getAllGoogleServices = function() {
   var services = document.getElementById("google-services");
-  for(var i in cjgShortcuts.mostPopular) {
+  for(let i in cjgShortcuts.mostPopular) {
     // we don't want to do anything with extensions yet.
     var extInf = cjgShortcuts.list[i];
-    if(extInf !== undefined) {
+    if(extInf !== undefined && extInf.u !== undefined && extInf.u.indexOf("google") > 1) {
       var service = document.createElement("div");
 
+      var anchor = document.createElement("a");
+	  anchor.setAttribute("href",  extInf.u);
       var img = new Image();
       img.className = "image";
-	  //console.log(extInf.name , " : ", extInf.icon);
+	  img.id = "img_" +  extInf.i18n;
       img.src = "images/48/" + extInf.icon + "_48dp.svg";
       img.setAttribute("title", extInf.name);   
-      img.addEventListener("click", (function(ext) {
-	    return function() {
-	        window.location.href = extInf.u;
-	    };
-	})(extInf));
-
+      
+	  anchor.appendChild(img);
       var name = document.createElement("div");
       name.className = "name";
       name.textContent = extInf.name;
       service.className = "service";
-      service.appendChild(img);
+      service.appendChild(anchor);
       service.appendChild(name);
       services.appendChild(service);
     }
   }
+  
 };
 
 var find128Image = function(icons) {
