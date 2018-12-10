@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
         //chrome.management.getAll(getAllCallback);
 		getAllGoogleServices();
+		getAllSocialApps();
  });
 	  
 $(document).ready(function () {
@@ -10,6 +11,10 @@ $(document).ready(function () {
 	
 	$('#apps-menu').on('click', function () {
 		$('#apps-modal').modal('toggle');
+	});
+
+	$('#social-apps-menu').on('click', function () {
+		$('#social-apps-modal').modal('toggle');
 	});
 
 	//$('#sidebarCollapse').trigger('click');
@@ -55,14 +60,15 @@ var getAllGoogleServices = function() {
       var service = document.createElement("div");
 
       var anchor = document.createElement("a");
-	  anchor.setAttribute("href",  extInf.u);
+      anchor.setAttribute("href",  extInf.u);
+      anchor.setAttribute("target", "_blank");	    
       var img = new Image();
       img.className = "image";
 	  img.id = "img_" +  extInf.i18n;
-      img.src = "images/48/" + extInf.icon + "_48dp.svg";
+      img.src = "img/48/" + extInf.icon + "_48dp.svg";
       img.setAttribute("title", extInf.name);   
-      
-	  anchor.appendChild(img);
+      anchor.appendChild(img);
+
       var name = document.createElement("div");
       name.className = "name";
       name.textContent = extInf.name;
@@ -70,6 +76,37 @@ var getAllGoogleServices = function() {
       service.appendChild(anchor);
       service.appendChild(name);
       services.appendChild(service);
+    }
+  }
+  
+};
+
+var getAllSocialApps = function() {
+  var socialApps = document.getElementById("social-apps");
+  for(let i in socialMedia.socialApps) {
+    // we don't want to do anything with extensions yet.
+    var extInf = socialMedia.socialApps[i];
+    if(extInf !== undefined && extInf.url !== undefined) {
+      var socialApp = document.createElement("div");
+
+      var anchor = document.createElement("a");
+      anchor.setAttribute("href",  extInf.url);
+      anchor.setAttribute("target", "_blank");	    
+      var img = document.createElement("div");;
+      img.className = "social-image";
+      img.id = "img_" +  extInf.i18n;
+      //img.src = "img/48/" + extInf.icon + "_48dp.svg";
+      img.setAttribute("title", extInf.name);
+      img.setAttribute("style", "background:url('" + extInf.icon +"') round;")   
+      anchor.appendChild(img);
+
+      var name = document.createElement("div");
+      name.className = "name";
+      name.textContent = extInf.title;
+      socialApp.className = "social-app";
+      socialApp.appendChild(anchor);
+      socialApp.appendChild(name);
+      socialApps.appendChild(socialApp);
     }
   }
   

@@ -153,7 +153,7 @@ var cjgShortcuts = function() {
             20: {
                 name: "Blogs & Social Media",
                 i18n: "cj_i18n_00459",
-                icon: "about",
+                icon: "blogger",
                 badge: "mode_comment",
                 u: "https://www.google.com/press/blog-social-directory.html",
                 nu: "www.google.com/press/blog-social-directory.html"

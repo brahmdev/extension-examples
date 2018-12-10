@@ -9,11 +9,12 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/font-awesome.css">
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="css/style4.css">
-    <link rel="stylesheet" href="css/custom.css">
-
-    
+    <link rel="stylesheet" href="css/custom.css">  
 
   </head>
   <body>
@@ -34,25 +35,31 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" id="apps-menu">
-                        <i class="fas fa-th"></i>
-                        Apps
-                    </a>
                     <a href="#pageSubmenu">
                         <i class="fas fa-cog"></i>
                         General
                     </a>
-                    <!--<ul class="collapse list-unstyled" id="pageSubmenu">
+		   <a href="#appSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-th"></i>
+                        Apps
+                    </a>
+                    <ul class="collapse list-unstyled" id="appSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#" id="apps-menu">
+        	                <i class="fab fa-google"></i>
+	                        Google Apps
+                    	    </a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                           <a href="#" id="social-apps-menu">
+			     <i class="fas fa-users"></i>
+			     Social Apps
+			   </a>
                         </li>
                         <li>
                             <a href="#">Page 3</a>
                         </li>
-                    </ul>-->
+                    </ul>
                 </li>
                 <li>
                     <a href="#">
@@ -106,17 +113,35 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
-			  </div>
-			  <div class="modal-body">
-				<div class="google-services" id="google-services"></div>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			  </div>
+			 </div>
+			 <div class="modal-body">
+			     <div class="google-services" id="google-services"></div>
+			 </div>
+			 <div class="modal-footer">
+			     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			 </div>
 		</div>
 	  </div>
-	</div>
+   </div>
+
+   <div class="modal fade apps-modal" id="social-apps-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Social Apps & Messanger</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			 </div>
+			 <div class="modal-body">
+			     <div class="social-apps" id="social-apps"></div>
+			 </div>
+			 <div class="modal-footer">
+			     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			 </div>
+		</div>
+	  </div>
+   </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
    
@@ -128,6 +153,7 @@
     <script defer src="js/solid.js"></script>
     <script defer src="js/fontawesome.js"></script>
     <script src="js/cjg-shortcuts.js"></script>
+    <script src="js/social-media-apps.js"></script>script>
     <script src="js/custom.js"></script>script>
   </body>
 </html>
