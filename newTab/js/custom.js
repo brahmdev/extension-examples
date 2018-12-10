@@ -11,6 +11,8 @@ $(document).ready(function () {
 	$('#apps-menu').on('click', function () {
 		$('#apps-modal').modal('toggle');
 	});
+
+	$('#sidebar').toggleClass('active');
 	
 	//console.log("**************** ",cjgShortcuts.mostPopular);
 	//console.log("List**********	 ",cjgShortcuts.list["59"]);
