@@ -101,7 +101,7 @@ var getAllSocialApps = function() {
       img.className = "social-image";
       img.id = "img_" +  extInf.i18n;
       //img.src = "img/48/" + extInf.icon + "_48dp.svg";
-      img.setAttribute("title", extInf.name);
+      img.setAttribute("title", extInf.title);
       img.setAttribute("style", "background:url('" + extInf.icon +"') round;")   
       anchor.appendChild(img);
 
@@ -131,7 +131,7 @@ var getICloudApps = function() {
       img.className = "icloud-image";
       img.id = "img_" +  extInf.i18n;
       //img.src = "img/48/" + extInf.icon + "_48dp.svg";
-      img.setAttribute("title", extInf.name);
+      img.setAttribute("title", extInf.title);
       img.setAttribute("style", "background:url('" + extInf.icon +"') round;")   
       anchor.appendChild(img);
 
