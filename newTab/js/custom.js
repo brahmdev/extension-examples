@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //chrome.management.getAll(getAllCallback);
 		getAllGoogleServices();
 		getAllSocialApps();
+    getAllNewsApps();
  });
 	  
 $(document).ready(function () {
@@ -13,18 +14,6 @@ $(document).ready(function () {
 		$('#apps-modal').modal('toggle');
 	});
 
-	$('#social-apps-menu').on('click', function () {
-		$('#social-apps-modal').modal('toggle');
-	});
-
-	$('#icloud-apps-menu').on('click', function () {
-		$('#icloud-apps-modal').modal('toggle');
-	});
-
-	//$('#sidebarCollapse').trigger('click');
-	
-	//console.log("**************** ",cjgShortcuts.mostPopular);
-	//console.log("List**********	 ",cjgShortcuts.list["59"]);
 });
 
 var getAllCallback = function(list) {
@@ -111,6 +100,36 @@ var getAllSocialApps = function() {
       socialApp.appendChild(anchor);
       socialApp.appendChild(name);
       socialApps.appendChild(socialApp);
+    }
+  }
+};
+
+var getAllNewsApps = function() {
+  var newsApps = document.getElementById("news-apps");
+  for(let i in news.newsApps) {
+    // we don't want to do anything with extensions yet.
+    var extInf = news.newsApps[i];
+    if(extInf !== undefined && extInf.url !== undefined && extInf.category === 'news') {
+      var newsApp = document.createElement("div");
+
+      var anchor = document.createElement("a");
+      anchor.setAttribute("href",  extInf.url);
+      anchor.setAttribute("target", "_blank");      
+      var img = document.createElement("div");;
+      img.className = "social-image";
+      img.id = "img_" +  extInf.i18n;
+      //img.src = "img/48/" + extInf.icon + "_48dp.svg";
+      img.setAttribute("title", extInf.title);
+      img.setAttribute("style", "background:url('" + extInf.icon +"') round;")   
+      anchor.appendChild(img);
+
+      var name = document.createElement("div");
+      name.className = "name";
+      name.textContent = extInf.title;
+      newsApp.className = "social-app";
+      newsApp.appendChild(anchor);
+      newsApp.appendChild(name);
+      newsApps.appendChild(newsApp);
     }
   }
 };
