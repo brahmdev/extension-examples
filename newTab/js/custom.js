@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
         //chrome.management.getAll(getAllCallback);
 		getAllGoogleServices();
 		getAllSocialApps();
-		getICloudApps();
  });
 	  
 $(document).ready(function () {
@@ -112,36 +111,6 @@ var getAllSocialApps = function() {
       socialApp.appendChild(anchor);
       socialApp.appendChild(name);
       socialApps.appendChild(socialApp);
-    }
-  }
-};
-
-var getICloudApps = function() {
-  var iCloudApps = document.getElementById("icloud-apps");
-  for(let i in socialMedia.socialApps) {
-    // we don't want to do anything with extensions yet.
-    var extInf = socialMedia.socialApps[i];
-    if(extInf !== undefined && extInf.url !== undefined && extInf.category === 'icloud-service') {
-      var icloudApp = document.createElement("div");
-
-      var anchor = document.createElement("a");
-      anchor.setAttribute("href",  extInf.url);
-      anchor.setAttribute("target", "_blank");	    
-      var img = document.createElement("div");;
-      img.className = "icloud-image";
-      img.id = "img_" +  extInf.i18n;
-      //img.src = "img/48/" + extInf.icon + "_48dp.svg";
-      img.setAttribute("title", extInf.title);
-      img.setAttribute("style", "background:url('" + extInf.icon +"') round;")   
-      anchor.appendChild(img);
-
-      var name = document.createElement("div");
-      name.className = "name";
-      name.textContent = extInf.title;
-      icloudApp.className = "icloud-app";
-      icloudApp.appendChild(anchor);
-      icloudApp.appendChild(name);
-      iCloudApps.appendChild(icloudApp);
     }
   }
 };
