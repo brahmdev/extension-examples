@@ -4,7 +4,7 @@ body {
 
 #google-services, #social-apps, #icloud-apps {
   display: flex;
-  width:755px;
+  width:100%;
   margin:0 25px; /*put div in the center of the page*/
   flex-flow: row wrap; /*makes the content to come on new line if overflows*/
   justify-content: flex-start; /* give some spacing between elements*/
