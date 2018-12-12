@@ -1,13 +1,21 @@
 body {
- /*background: url("https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=30f112650c5851eec91cbb6ba3d71f51&auto=format&fit=crop&w=1920") center center / cover no-repeat*/
+  background: url("https://images.unsplash.com/photo-1528163073829-df0b94e210a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83b5db9f6094f5de650156ea3ddc9f0e&auto=format&fit=crop&w=1920") center center / cover no-repeat
 }
 
-#google-services, #social-apps, #news-apps {
+#apps, #google-services, #social-apps, #news-apps {
   display: flex;
   margin:0 25px; /*put div in the center of the page*/
   flex-flow: row wrap; /*makes the content to come on new line if overflows*/
   justify-content: flex-start; /* give some spacing between elements*/
 }
+
+.installed-app {
+  padding: 10px;
+}
+
+.installed-apps-img {
+    border-radius: 50%;
+  }
 
 .service, .social-app, .news-app {
  margin-bottom: 35px;
@@ -45,3 +53,43 @@ body {
 .vtab-title {
   padding-left: 10px;
 }
+
+.main-box {
+  position: absolute;
+  top: calc(30% - 100px);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px; 
+  margin-left: calc(50% - 350px); 
+  width: 600px;
+}
+  .search-bar .icon {
+    width: 45px;
+    height: 20px; 
+  }
+  .search-bar input {
+    width: 555px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px; 
+  }
+  .search-bar.rounded-searchbar {
+    border-radius: 45px; 
+  }
+  .search-bar.dark {
+    background: rgba(0, 0, 0, 0.5); 
+  }
+  .search-bar.dark input {
+      color: #fff; 
+  }
+
+.swiper-slide {
+}
+
