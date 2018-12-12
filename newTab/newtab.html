@@ -1,181 +1,164 @@
 <html>
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Chrome Tab</title>
-
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="css/font-awesome.css">
-
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="css/style4.css">
-    <link rel="stylesheet" href="css/custom.css">  
-
-  </head>
-  <body>
-
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar" class="active">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Chrome Tab</title>
+      <!-- Bootstrap CSS CDN -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/font-awesome.css">
+      <!-- Our Custom CSS -->
+      <link rel="stylesheet" href="css/style4.css">
+      <link rel="stylesheet" href="css/custom.css">
+   </head>
+   <body>
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         <nav id="sidebar" class="active">
             <div class="sidebar-header">
-                <h3>Customized Tab</h3>
-                <strong>CT</strong>
+               <h3>Customized Tab</h3>
+               <strong>CT</strong>
             </div>
-
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#homeSubmenu">
-                        <i class="fas fa-home"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu">
-                        <i class="fas fa-cog"></i>
-                        General
-                    </a>
-		   <a href="#appSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-th"></i>
-                        Apps
-                    </a>
-                    <ul class="collapse list-unstyled" id="appSubmenu">
-                        <li>
-                            <a href="#" id="apps-menu">
-								<i class="fab fa-google"></i>
-								Google Apps
-                    	    </a>
-                        </li>
-                        <li>
-                           <a href="#" id="social-apps-menu">
-								 <i class="fas fa-users"></i>
-								 Social Apps
-						   </a>
-                        </li>
-                    </ul>
-                </li>
-				<li>
-                    <a href="#mgmtSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-cogs"></i>
-                        Management
-                    </a>
-                    <ul class="collapse list-unstyled" id="mgmtSubmenu">
-                        <li>
-                            <a href="#" id="bookmarks-menu">
-        	                <i class="fas fa-bookmark"></i>
-	                        Bookmarks
-                    	    </a>
-                        </li>
-                        <li>
-                           <a href="#" id="todo-menu">
-			     <i class="fas fa-tasks"></i>
-				ToDo
-			   </a>
-                        </li>
-                        <li>
-                            <a href="#" id="notes-menu">
-			     <i class="fas fa-sticky-note"></i>
-			     Notes
-			   </a>
-                        </li>
-			<li>
-                            <a href="#" id="session-menu">
-			     <i class="fas fa-tv"></i>
-			     Session
-			   </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        Background
-                    </a>
-                </li>
+               <li class="active">
+                  <a href="#homeSubmenu">
+                  <i class="fas fa-home"></i>
+                  Home
+                  </a>
+               </li>
+               <li>
+                  <a href="#pageSubmenu">
+                  <i class="fas fa-cog"></i>
+                  General
+                  </a>
+                  <a href="#apps" id="apps-menu">
+                  <i class="fas fa-th"></i>
+                  Apps
+                  </a>
+               </li>
+               <li>
+                  <a href="#mgmtSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                  <i class="fas fa-cogs"></i>
+                  Management
+                  </a>
+                  <ul class="collapse list-unstyled" id="mgmtSubmenu">
+                     <li>
+                        <a href="#" id="bookmarks-menu">
+                        <i class="fas fa-bookmark"></i>
+                        Bookmarks
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#" id="todo-menu">
+                        <i class="fas fa-tasks"></i>
+                        ToDo
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#" id="notes-menu">
+                        <i class="fas fa-sticky-note"></i>
+                        Notes
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#" id="session-menu">
+                        <i class="fas fa-tv"></i>
+                        Session
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#">
+                  <i class="fas fa-image"></i>
+                  Background
+                  </a>
+               </li>
             </ul>
-
             <ul class="list-unstyled CTAs">
-                <!--<li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>-->
+               <!--<li>
+                  <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                  </li>
+                  <li>
+                  <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                  </li>-->
             </ul>
-        </nav>
-   
-	<!-- Page Content  -->
-        <div id="content">
-			<div class="container-fluid">
-
-				<button type="button" id="sidebarCollapse" class="btn btn-info">
-					<i class="fas fa-align-left"></i>
-					<span>Toggle Sidebar</span>
-				</button>
-			</div>
-		<div id="apps"></div>
-	</div>
-
-   </div>
-   
-   <div class="modal fade apps-modal" id="apps-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Google Shortcuts</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			 </div>
-			 <div class="modal-body">
-			     <div class="container">
-						<div class="row">
-							<div class="google-services" id="google-services"></div>
-						</div>
-					</div>
-			 </div>
-			 <div class="modal-footer">
-			     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			 </div>
-		</div>
-	  </div>
-   </div>
-
-   <div class="modal fade apps-modal" id="social-apps-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Social Apps & Messanger</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			 </div>
-			 <div class="modal-body">
-			     <div class="social-apps" id="social-apps"></div>
-			 </div>
-			 <div class="modal-footer">
-			     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			 </div>
-		</div>
-	  </div>
-   </div>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-   
-   <script src="js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
-	
-	<!-- Font Awesome JS -->
-    <script defer src="js/solid.js"></script>
-    <script defer src="js/fontawesome.js"></script>
-    <script src="js/cjg-shortcuts.js"></script>
-    <script src="js/social-media-apps.js"></script>script>
-    <script src="js/custom.js"></script>script>
-  </body>
+         </nav>
+         <!-- Page Content  -->
+         <div id="content">
+            <div class="container-fluid">
+               <button type="button" id="sidebarCollapse" class="btn btn-info">
+               <i class="fas fa-align-left"></i>
+               <span>Toggle Sidebar</span>
+               </button>
+            </div>
+            <div id="apps"></div>
+         </div>
+      </div>
+      <div class="modal fade apps-modal" id="apps-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Apps</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-3">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                               <a class="nav-link active" id="v-pills-google-tab" data-toggle="pill" href="#v-pills-google" role="tab" aria-controls="v-pills-google" aria-selected="true"><i class="fab fa-google"><span class="vtab-title">Google Services Apps</span></i></a>
+                               <a class="nav-link" id="v-pills-social-tab" data-toggle="pill" href="#v-pills-social" role="tab" aria-controls="v-pills-social" aria-selected="false"><i class="fab fa-facebook-f"><span class="vtab-title">Social Media Apps</span></i></a>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="tab-content" id="v-pills-tabContent">
+                               <div class="tab-pane fade show active" id="v-pills-google" role="tabpanel" aria-labelledby="v-pills-google-tab">
+                                  <div class="google-services" id="google-services"></div>
+                               </div>
+                               <div class="tab-pane fade" id="v-pills-social" role="tabpanel" aria-labelledby="v-pills-social-tab">
+                                  <div class="social-apps" id="social-apps"></div>
+                               </div>
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal fade apps-modal" id="social-apps-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Social Apps & Messanger</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- jQuery CDN - Slim version (=without AJAX) -->
+      <script src="js/jquery-3.3.1.slim.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="js/bootstrap.min.js"></script>
+      <!-- Font Awesome JS -->
+      <script defer src="js/solid.js"></script>
+      <script defer src="js/fontawesome.js"></script>
+      <script src="js/cjg-shortcuts.js"></script>
+      <script src="js/social-media-apps.js"></script>script>
+      <script src="js/custom.js"></script>script>
+   </body>
 </html>
