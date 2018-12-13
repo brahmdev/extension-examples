@@ -1,5 +1,5 @@
 body {
-  background: url("https://images.unsplash.com/photo-1528163073829-df0b94e210a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83b5db9f6094f5de650156ea3ddc9f0e&auto=format&fit=crop&w=1920") center center / cover no-repeat
+  background: url("https://images.unsplash.com/photo-1502657877623-f66bf489d236?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4a086173e78551f89a3e22d03a8053f&auto=format&fit=crop&w=1920") center center / cover no-repeat;
 }
 
 #apps, #google-services, #social-apps, #news-apps {
@@ -93,3 +93,17 @@ body {
 .swiper-slide {
 }
 
+.installed-app:hover {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    vertical-align: top;
+    margin-left: -15px;
+    border-radius: 20px;
+    opacity: 1.0;
+    width: 16px;
+    height: 16px;
+    background: url(chrome-extension://oeknfblmedgidkknjllobmlhbbeakmhh/img/svg/close.svg) center/contain no-repeat;
+}

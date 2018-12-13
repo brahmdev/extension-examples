@@ -33,11 +33,16 @@ var getAllCallback = function(list) {
     	    };
     	})(extInf));
 
+      var closeIconImage = new Image();
+      closeIconImage.className = "close-icon";
+      closeIconImage.id = "close-icon";
+
       var name = document.createElement("div");
       name.className = "name";
       name.textContent = extInf.name;
       app.className = "installed-app";
       app.appendChild(img);
+      app.appendChild(closeIconImage);
       app.appendChild(name);
       apps.appendChild(app);
   }
@@ -57,7 +62,7 @@ var getAllGoogleServices = function() {
       anchor.setAttribute("target", "_blank");	    
       var img = new Image();
       img.className = "image";
-	  img.id = "img_" +  extInf.i18n;
+	    img.id = "img_" +  extInf.i18n;
       img.src = "img/48/" + extInf.icon + "_48dp.svg";
       img.setAttribute("title", extInf.name);   
       anchor.appendChild(img);
