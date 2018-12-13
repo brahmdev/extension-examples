@@ -257,11 +257,16 @@ a.article:hover {
 
 .modal-dialog {
   max-width: 81% !important;
+  height: 94vh;
+}
+
+.modal-content {
   height: 100%;
 }
 
 .container {
-	max-width: 97% !important;
-	padding-right: 0;
-	padding-left: 40px;
+  max-width: 97% !important;
+  padding-right: 0;
+  padding-left: 40px;
 }
+
