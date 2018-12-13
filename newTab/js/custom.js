@@ -40,6 +40,7 @@ var getAllCallback = function(list) {
       var name = document.createElement("div");
       name.className = "name";
       name.textContent = extInf.name;
+      name.setAttribute("title", extInf.name);
       app.className = "installed-app";
       app.appendChild(img);
       app.appendChild(closeIconImage);
