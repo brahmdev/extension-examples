@@ -38,7 +38,7 @@ var getAllCallback = function(list) {
       closeIconImage.id = "close-icon";
 
       var name = document.createElement("div");
-      name.className = "name";
+      name.className = "installed-apps-name";
       name.textContent = extInf.name;
       name.setAttribute("title", extInf.name);
       app.className = "installed-app";
@@ -76,8 +76,7 @@ var getAllGoogleServices = function() {
       service.appendChild(name);
       services.appendChild(service);
     }
-  }
-  
+  } 
 };
 
 var getAllSocialApps = function() {

@@ -37,14 +37,21 @@ body {
   margin: 0 auto;
 }
 
-.name {
+.name, .installed-apps-name {
   display:block;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  width:80px;
   text-align:center;
-  color: #ffffff;
+}
+
+.name {
+ width: 115px;
+}
+
+.installed-apps-name {
+  color: #fff;
+  width: 80px;
 }
 
 #v-pills-tabContent {
@@ -61,6 +68,9 @@ body {
 .main-box {
   position: absolute;
   top: calc(30% - 100px);
+  margin-top: 60px;
+  width: 91%;
+  display: grid;
 }
 
 .search-bar {
@@ -93,6 +103,10 @@ body {
   .search-bar.dark input {
       color: #fff; 
   }
+
+.pinned-bookmarks-box {
+  margin: 0 auto;
+}
 
 .swiper-slide {
 }
