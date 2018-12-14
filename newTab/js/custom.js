@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    chrome.management.getAll(getAllCallback);
-		getAllGoogleServices();
-		getAllSocialApps();
-    getAllNewsApps();
+    
  });
 	  
 $(document).ready(function () {
@@ -13,7 +10,11 @@ $(document).ready(function () {
 	$('#apps-menu').on('click', function () {
 		$('#apps-modal').modal('toggle');
 	});
-
+	
+	
+    $(".container-fluid").load("../apps-modal.html"); 
+	
+	chrome.management.getAll(getAllCallback);
 });
 
 var getAllCallback = function(list) {
@@ -46,6 +47,10 @@ var getAllCallback = function(list) {
       app.appendChild(closeIconImage);
       app.appendChild(name);
       apps.appendChild(app);
+	  
+	getAllGoogleServices();
+	getAllSocialApps();
+    getAllNewsApps();
   }
 }
 };
@@ -141,7 +146,6 @@ var getAllNewsApps = function() {
 
 var find128Image = function(icons) {
   for(var icon in icons) {
-    console.log("icon is " , icon);
     if(icons[icon].size == "128") {
       return icons[icon].url;
     }
