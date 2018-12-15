@@ -1,7 +1,79 @@
+var editor;
+
+
 function populateRulesData() {
-    var userData =  getUserData();
+
+    // Object that will contain the local state
+    var userData = {};
+ 
+    // Create or update the userData localStorage entry
+    const storedValue = chrome.storage.local.get(['userData'], function(result) {});
+    console.log("value is *** ", storedValue);
+    chrome.storage.local.get(['userData'], function(result) {
+        userData = storedValue === undefined ? {} : storedValue;
+    });
+    
+    // Set up the editor
+    editor = new $.fn.dataTable.Editor( {
+        table: "#example",
+        fields: [ {
+                label: "Name:",
+                name: "name"
+            }, {
+                label: "URL:",
+                name: "url"
+            }
+        ],
+        ajax: function ( method, url, d, successCallback, errorCallback ) {
+            var output = { data: [] };
+ 
+            if ( d.action === 'create' ) {
+                // Create new row(s), using the current time and loop index as
+                // the row id
+                var dateKey = +new Date();
+ 
+                $.each( d.data, function (key, value) {
+                    var id = dateKey+''+key;
+ 
+                    value.DT_RowId = id;
+                    userData[ id ] = value;
+                    output.data.push( value );
+                } );
+            }
+            else if ( d.action === 'edit' ) {
+                // Update each edited item with the data submitted
+                $.each( d.data, function (id, value) {
+                    value.DT_RowId = id;
+                    $.extend( userData[ id ], value );
+                    output.data.push( userData[ id ] );
+                } );
+            }
+            else if ( d.action === 'remove' ) {
+                // Remove items from the object
+                $.each( d.data, function (id) {
+                    delete userData[ id ];
+                } );
+            }
+ 
+            // Store the latest `userData` object for next reload
+            var obj = {};
+            obj[userData] = userData;
+            chrome.storage.local.set({[userData]: JSON.stringify(userData)}, function() {
+                console.log('Value is set to ' + JSON.stringify(userData));
+            });
+
+            // Show Editor what has changed
+            successCallback( output );
+        }
+    } );
+
+    //var userData =  getUserData();
     var table = $('#example').DataTable( {
-      data :  userData,
+        dom: "Bfrtip",
+     // data :  userData,
+        data: $.map( userData, function (value, key) {
+         return value;
+        } ),
       "columns": [
           {
               "className":      'details-control',
@@ -12,8 +84,17 @@ function populateRulesData() {
           { "data": "name" },
           { "data": "url" }
       ],
+      "scrollY": "300px",
+      "scrollCollapse": true,
       "order": [[1, 'asc']],
-      "bDestroy": true
+      "bDestroy": true,
+        select: true,
+       buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor }
+        ]
+
   } );
    
   // Add event listener for opening and closing details
@@ -46,7 +127,7 @@ function getUserData() {
         var item = someData[i];
   */
       data.push({ 
-            "id": 1,
+            "DT_RowId": "1",
             "name" : "Example Site",
             "url"  : 'http://example.com' 
         });
