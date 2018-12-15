@@ -7,12 +7,15 @@ function populateRulesData() {
     var userData = {};
  
     // Create or update the userData localStorage entry
-    const storedValue = chrome.storage.local.get(['userData'], function(result) {});
-    console.log("value is *** ", storedValue);
     chrome.storage.local.get(['userData'], function(result) {
-        userData = storedValue === undefined ? {} : storedValue;
+        userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
+        console.log("store value is: ", userData);
+       // initRuleTable(result);
+        
     });
-    
+}
+
+function initRuleTable(userData) {
     // Set up the editor
     editor = new $.fn.dataTable.Editor( {
         table: "#example",
@@ -58,12 +61,13 @@ function populateRulesData() {
             // Store the latest `userData` object for next reload
             var obj = {};
             obj[userData] = userData;
-            chrome.storage.local.set({[userData]: JSON.stringify(userData)}, function() {
+            chrome.storage.local.set({userData}, function() {
                 console.log('Value is set to ' + JSON.stringify(userData));
+                // Show Editor what has changed
+                successCallback( output );
             });
 
-            // Show Editor what has changed
-            successCallback( output );
+            
         }
     } );
 
