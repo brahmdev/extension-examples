@@ -10,7 +10,7 @@
       <!-- Our Custom CSS -->
       <link rel="stylesheet" href="css/style4.css">
       <link rel="stylesheet" href="css/custom.css">
-	    <link rel="import" href="./apps-modal.html">
+	   <link rel="stylesheet" href="css/jquery.dataTables.min.css">
    </head>
    <body>
       <div class="wrapper">
@@ -35,6 +35,10 @@
                   <a href="#apps" id="apps-menu">
                   <i class="fas fa-th"></i>
                   Apps
+                  </a>
+				  <a href="#my-rules" id="my-rules">
+                  <i class="fa fa-ruler"></i>
+                  My Rules
                   </a>
                </li>
                <!--<li>
@@ -92,6 +96,8 @@
                <i class="fas fa-align-left"></i>
                <span>Toggle Sidebar</span>
                </button>
+			   <div class="apps-modal"></div>
+			   <div class="rules-modal"></div>
             </div>
             <div class="main-box">
                <form action="http://www.google.com/search" method="get" class="search-bar light " target="_blank" autocomplete="off">
@@ -111,7 +117,7 @@
                   </div>
                </div>
             </div>
-            <div data-include="./apps-modal.html"></div>
+            
          </div>
       </div>
       
@@ -129,5 +135,7 @@
       <script src="js/social-media-apps.js"></script>
       <script src="js/news-apps.js"></script>
       <script src="js/custom.js"></script>
+      <script src="js/jquery.dataTables.min.js"></script>
+      <script src="js/rules.js"></script>
    </body>
 </html>

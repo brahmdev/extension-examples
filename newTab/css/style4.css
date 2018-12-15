@@ -269,4 +269,14 @@ a.article:hover {
   padding-right: 0;
   padding-left: 40px;
 }
+.dataTables_wrapper {
+    width: 100vw;
+}
 
+td.details-control {
+    background: url('../img/datatable/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../img/datatable/details_close.png') no-repeat center center;
+}
