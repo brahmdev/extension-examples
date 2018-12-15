@@ -1,57 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
- });
-	  
 $(document).ready(function () {
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
 	});
-	
+  
+  $('#home').on('click', function () {
+    $('.home').show();
+    $(".apps-modal").hide();
+    $(".rules-modal").hide();
+  });
+  
 	$('#apps-menu').on('click', function () {
-		$('#apps-modal').modal('toggle');
+    $('.apps-modal').show();
+    $(".home").hide();
+    $(".rules-modal").hide();
 	});
 	
 	$('#my-rules').on('click', function () {
-    $('#rules-modal').modal('toggle');
-    
-    var table = $('#example').DataTable( {
-      "ajax": "../data.json",
-      "columns": [
-          {
-              "className":      'details-control',
-              "orderable":      false,
-              "data":           null,
-              "defaultContent": ''
-          },
-          { "data": "name" },
-          { "data": "position" },
-          { "data": "office" },
-          { "data": "salary" }
-      ],
-      "order": [[1, 'asc']]
-  } );
-   
-  // Add event listener for opening and closing details
-  $('#example tbody').on('click', 'td.details-control', function () {
-      var tr = $(this).closest('tr');
-      var row = table.row( tr );
+    $('.apps-modal').hide();
+    $(".home").hide();
+    $(".rules-modal").show();
+    populateRulesData();
+  });
 
-      if ( row.child.isShown() ) {
-          // This row is already open - close it
-          row.child.hide();
-          tr.removeClass('shown');
-      }
-      else {
-          // Open this row
-          row.child( format(row.data()) ).show();
-          tr.addClass('shown');
-      }
-   } );
-});
-	
-  $(".apps-modal").load("../apps-modal.html"); 
-	$(".rules-modal").load("../rules-modal.html"); 
-	
+  $(".home").load("../home.html"); 
+  $(".apps-modal").load("../apps.html"); 
+	$(".rules-modal").load("../rules.html"); 
+  
+  $(".apps-modal").hide();
+  $(".rules-modal").hide();
 	chrome.management.getAll(getAllCallback);
 });
 
@@ -84,13 +60,12 @@ var getAllCallback = function(list) {
       app.appendChild(img);
       app.appendChild(closeIconImage);
       app.appendChild(name);
-      apps.appendChild(app);
-	  
-	getAllGoogleServices();
-	getAllSocialApps();
-    getAllNewsApps();
+      apps.appendChild(app); 
+    }
   }
-}
+  getAllGoogleServices();
+	getAllSocialApps();
+  getAllNewsApps();
 };
 
 var getAllGoogleServices = function() {
@@ -191,4 +166,3 @@ var find128Image = function(icons) {
 
   return "/noicon.png";
 };
-

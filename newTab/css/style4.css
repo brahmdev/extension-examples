@@ -260,17 +260,13 @@ a.article:hover {
   height: 94vh;
 }
 
-.modal-content {
-  height: 100%;
-}
-
 .container {
   max-width: 97% !important;
   padding-right: 0;
   padding-left: 40px;
 }
 .dataTables_wrapper {
-    width: 100vw;
+    width: 100%;
 }
 
 td.details-control {
@@ -280,3 +276,13 @@ td.details-control {
 tr.shown td.details-control {
     background: url('../img/datatable/details_close.png') no-repeat center center;
 }
+
+.apps-modal, .rules-modal {
+    background: ghostwhite;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.apps-modal, .rules-modal > .container {
+    padding-top: 15px;
+} 
