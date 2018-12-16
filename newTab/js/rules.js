@@ -1,26 +1,25 @@
 var table;
 var editor;
-var selectedRowData;
 
-function bindEvent() {
+function bindEvent(rowData) {
     $('#html_save').on('click', function () {
-        selectedRowData.html = $('#html_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        rowData.html = $('#html_txtarea_' + rowData.DT_RowId)[0].value;
         var userData = {};
-        userData[selectedRowData.DT_RowId] = selectedRowData;
+        userData[rowData.DT_RowId] = rowData;
         setValueInStorage(userData);
     });
 
     $('#js_save').on('click', function () {
-        selectedRowData.js = $('#js_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        rowData.js = $('#js_txtarea_' + rowData.DT_RowId)[0].value;
         var userData = {};
-        userData[selectedRowData.DT_RowId] = selectedRowData;
+        userData[rowData.DT_RowId] = rowData;
         setValueInStorage(userData);
     });
 
     $('#css_save').on('click', function () {
-        selectedRowData.css = $('#css_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        rowData.css = $('#css_txtarea_' + rowData.DT_RowId)[0].value;
         var userData = {};
-        userData[selectedRowData.DT_RowId] = selectedRowData;
+        userData[rowData.DT_RowId] = rowData;
         setValueInStorage(userData);
     });
 }
@@ -83,6 +82,9 @@ function initRuleTable(userData) {
                 $.each( d.data, function (id) {
                     delete userData[ id ];
                 } );
+                chrome.storage.sync.set({userData}, function() {
+                    console.log('Value is set to ' + JSON.stringify(userData));
+                });
             }
  
             // Store the latest `userData` object for next reload
@@ -132,8 +134,6 @@ function initRuleTable(userData) {
   $('#example tbody').on('click', 'td.details-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row( tr );
-    selectedRowData = '';
-    selectedRowData = row.data();
 
     if ( row.child.isShown() ) {
         row.child.hide();
@@ -145,18 +145,18 @@ function initRuleTable(userData) {
         if ( table.row( '.shown' ).length) {
             $('.details-control', table.row( '.shown' ).node()).click();
         }
-        row.child( createChild(selectedRowData.DT_RowId) ).show();
+        row.child( createChild(row.data().DT_RowId) ).show();
         tr.addClass('shown');
-        bindEvent();
+        bindEvent(row.data());
         assignValues(row.data());
     }
    } );
 }
 
 function assignValues(rowData) {
-    $('#html_txtarea_' + selectedRowData.DT_RowId).val(rowData.html);
-    $('#js_txtarea_' + selectedRowData.DT_RowId).val(rowData.js);
-    $('#css_txtarea_' + selectedRowData.DT_RowId).val(rowData.css);
+    $('#html_txtarea_' + rowData.DT_RowId).val(rowData.html);
+    $('#js_txtarea_' + rowData.DT_RowId).val(rowData.js);
+    $('#css_txtarea_' + rowData.DT_RowId).val(rowData.css);
 }
 
 function setValueInStorage(userData) {
@@ -195,15 +195,15 @@ function createChild(rowId) {
      <div class="tab-content" id="nav-tabContent">
        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
          <textarea class="form-control" rows="5" id="html_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
-         <button type="button" id="html_save" class="btn btn-primary">Save HTML</button>
+         <button type="button" id="html_save" class="btn btn-primary pull-right">Save HTML</button>
        </div>
        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
          <textarea class="form-control" rows="5" id="js_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
-         <button type="button" id="js_save" class="btn btn-primary">Save JS</button>
+         <button type="button" id="js_save" class="btn btn-primary pull-right">Save JS</button>
        </div>
        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
          <textarea class="form-control" rows="5" id="css_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
-         <button type="button" id="css_save" class="btn btn-primary">Save CSS</button>
+         <button type="button" id="css_save" class="btn btn-primary pull-right">Save CSS</button>
        </div>
      </div>`;
    return childElement;

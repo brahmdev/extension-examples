@@ -125,3 +125,8 @@ body {
     height: 16px;
     background: url(chrome-extension://oeknfblmedgidkknjllobmlhbbeakmhh/img/svg/close.svg) center/contain no-repeat;
 }
+
+.pull-right {
+  float: right;
+  margin-top: 10px;
+}
