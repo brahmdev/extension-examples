@@ -30,7 +30,7 @@ function populateRulesData() {
         // Object that will contain the local state
         var userData = {};
     
-        // Create or update the userData localStorage entry
+        // get the userData chromeStorage entry
         chrome.storage.sync.get(['userData'], function(result) {
             userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
             console.log("store value is: ", userData);            
