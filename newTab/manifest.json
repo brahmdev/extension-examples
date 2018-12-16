@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Customized newtab",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Browser Extension which provides a new page on new tab with lots of useful shortcuts",
     "chrome_url_overrides": {
 	    "newtab": "newtab.html"
