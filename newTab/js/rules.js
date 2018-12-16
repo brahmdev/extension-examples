@@ -1,18 +1,42 @@
+var table;
 var editor;
+var selectedRowData;
 
+function bindEvent() {
+    $('#html_save').on('click', function () {
+        selectedRowData.html = $('#html_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        var userData = {};
+        userData[selectedRowData.DT_RowId] = selectedRowData;
+        setValueInStorage(userData);
+    });
+
+    $('#js_save').on('click', function () {
+        selectedRowData.js = $('#js_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        var userData = {};
+        userData[selectedRowData.DT_RowId] = selectedRowData;
+        setValueInStorage(userData);
+    });
+
+    $('#css_save').on('click', function () {
+        selectedRowData.css = $('#css_txtarea_' + selectedRowData.DT_RowId)[0].value;
+        var userData = {};
+        userData[selectedRowData.DT_RowId] = selectedRowData;
+        setValueInStorage(userData);
+    });
+}
 
 function populateRulesData() {
 
-    // Object that will contain the local state
-    var userData = {};
- 
-    // Create or update the userData localStorage entry
-    chrome.storage.local.get(['userData'], function(result) {
-        userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
-        console.log("store value is: ", userData);
-       // initRuleTable(result);
-        
-    });
+    if ( ! $.fn.DataTable.isDataTable( '#example' ) ) {
+        // Object that will contain the local state
+        var userData = {};
+    
+        // Create or update the userData localStorage entry
+        chrome.storage.sync.get(['userData'], function(result) {
+            userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
+            console.log("store value is: ", userData);            
+        });
+    }   
 }
 
 function initRuleTable(userData) {
@@ -40,6 +64,9 @@ function initRuleTable(userData) {
  
                     value.DT_RowId = id;
                     userData[ id ] = value;
+                    value.html = "";
+                    value.js = "";
+                    value.css = "";
                     output.data.push( value );
                 } );
             }
@@ -59,20 +86,14 @@ function initRuleTable(userData) {
             }
  
             // Store the latest `userData` object for next reload
-            var obj = {};
-            obj[userData] = userData;
-            chrome.storage.local.set({userData}, function() {
-                console.log('Value is set to ' + JSON.stringify(userData));
-                // Show Editor what has changed
-                successCallback( output );
-            });
+            setValueInStorage(userData);
 
-            
+            successCallback( output );
         }
     } );
 
     //var userData =  getUserData();
-    var table = $('#example').DataTable( {
+    table = $('#example').DataTable( {
         dom: "Bfrtip",
      // data :  userData,
         data: $.map( userData, function (value, key) {
@@ -86,8 +107,14 @@ function initRuleTable(userData) {
               "defaultContent": ''
           },
           { "data": "name" },
-          { "data": "url" }
+          { "data": "url" },
+          { "data": "html" },
+          { "data": "js" },
+          { "data": "css" }
       ],
+      "columnDefs": [
+           { "visible": false,  "targets": [ 3, 4, 5 ] }
+        ],
       "scrollY": "300px",
       "scrollCollapse": true,
       "order": [[1, 'asc']],
@@ -103,46 +130,60 @@ function initRuleTable(userData) {
    
   // Add event listener for opening and closing details
   $('#example tbody').on('click', 'td.details-control', function () {
-      var tr = $(this).closest('tr');
-      var row = table.row( tr );
+    var tr = $(this).closest('tr');
+    var row = table.row( tr );
+    selectedRowData = '';
+    selectedRowData = row.data();
 
-      if ( row.child.isShown() ) {
-          // This row is already open - close it
-          row.child.hide();
-          tr.removeClass('shown');
-      }
-      else {
-          // Open this row
-          row.child( $(
-              createChild()
-            ) ).show();
-          tr.addClass('shown');
-      }
+    if ( row.child.isShown() ) {
+        row.child.hide();
+        tr.removeClass('shown');     
+        }
+    else
+        {
+        //Below line does the trick :)
+        if ( table.row( '.shown' ).length) {
+            $('.details-control', table.row( '.shown' ).node()).click();
+        }
+        row.child( createChild(selectedRowData.DT_RowId) ).show();
+        tr.addClass('shown');
+        bindEvent();
+        assignValues(row.data());
+    }
    } );
 }
 
-function getUserData() {
-  
-    var data = [];
-    var userData = {};
-  
-    /*for(var i in someData) {
-  
-        var item = someData[i];
-  */
-      data.push({ 
-            "DT_RowId": "1",
-            "name" : "Example Site",
-            "url"  : 'http://example.com' 
-        });
-   // }
-  
-    userData.data = data;
-  
-    return data;
-  }
+function assignValues(rowData) {
+    $('#html_txtarea_' + selectedRowData.DT_RowId).val(rowData.html);
+    $('#js_txtarea_' + selectedRowData.DT_RowId).val(rowData.js);
+    $('#css_txtarea_' + selectedRowData.DT_RowId).val(rowData.css);
+}
 
-function createChild() {
+function setValueInStorage(userData) {
+    chrome.storage.sync.get(['userData'], function(result) {
+        if ($.isEmptyObject(result)) {
+            userData = userData;
+        } else {
+            Object.keys(userData)
+            .forEach(function eachKey(key) { 
+                result.userData[key] = userData[key];
+            });
+            userData =  {};
+            userData = result.userData;
+        }
+        
+        //userData = $.isEmptyObject(result) ? userData : (result.userData[userData.DT_RowId] = userData);
+        console.log("store value is: ", result);
+        chrome.storage.sync.set({userData}, function() {
+            console.log('Value is set to ' + JSON.stringify(userData));
+        });
+    // initRuleTable(result);
+        
+    });
+    
+}
+
+function createChild(rowId) {
     var childElement = `
        <nav>
        <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -153,13 +194,16 @@ function createChild() {
      </nav>
      <div class="tab-content" id="nav-tabContent">
        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-         <textarea class="form-control" rows="5" id="comment" placeholder="Enter you custom HTML for override"></textarea>
+         <textarea class="form-control" rows="5" id="html_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
+         <button type="button" id="html_save" class="btn btn-primary">Save HTML</button>
        </div>
        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-         <textarea class="form-control" rows="5" id="comment" placeholder="Enter you custom HTML for override"></textarea>
+         <textarea class="form-control" rows="5" id="js_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
+         <button type="button" id="js_save" class="btn btn-primary">Save JS</button>
        </div>
        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-         <textarea class="form-control" rows="5" id="comment" placeholder="Enter you custom HTML for override"></textarea>
+         <textarea class="form-control" rows="5" id="css_txtarea_` + rowId + `" placeholder="Enter you custom HTML for override"></textarea>
+         <button type="button" id="css_save" class="btn btn-primary">Save CSS</button>
        </div>
      </div>`;
    return childElement;
