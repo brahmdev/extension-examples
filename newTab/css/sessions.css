@@ -1,0 +1,29 @@
+.sessions-modal {
+    background-color: whitesmoke;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+#tabs {
+    display: inline-block;
+    width: -webkit-fill-available
+}
+
+.tab {
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 60px;
+}
+
+.tab-image {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.tab-anchor {
+    word-wrap: break-word;
+    width: 50px;
+}

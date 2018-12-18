@@ -7,27 +7,40 @@ $(document).ready(function () {
     $('.home').show();
     $(".apps-modal").hide();
     $(".rules-modal").hide();
+    $(".sessions-modal").hide();
   });
   
 	$('#apps-menu').on('click', function () {
     $('.apps-modal').show();
     $(".home").hide();
     $(".rules-modal").hide();
+    $(".sessions-modal").hide();
 	});
 	
 	$('#my-rules').on('click', function () {
     $('.apps-modal').hide();
     $(".home").hide();
     $(".rules-modal").show();
+    $(".sessions-modal").hide();
     populateRulesData();
   });
 
+  $('#session-menu').on('click', function () {
+    $('.apps-modal').hide();
+    $(".home").hide();
+    $(".rules-modal").hide();
+    $(".sessions-modal").show();
+    populateSessionData();
+	});
+
   $(".home").load("../home.html"); 
   $(".apps-modal").load("../apps.html"); 
-	$(".rules-modal").load("../rules.html"); 
+  $(".rules-modal").load("../rules.html");
+  $(".sessions-modal").load("../sessions.html"); 
   
   $(".apps-modal").hide();
   $(".rules-modal").hide();
+  $(".sessions-modal").hide();
 	chrome.management.getAll(getAllCallback);
 });
 
