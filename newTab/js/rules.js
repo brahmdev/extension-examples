@@ -31,7 +31,7 @@ function populateRulesData() {
         var userData = {};
     
         // get the userData chromeStorage entry
-        chrome.storage.sync.get(['userData'], function(result) {
+        chrome.storage.sync.get(function(result) {
             userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
             console.log("store value is: ", userData);            
         });

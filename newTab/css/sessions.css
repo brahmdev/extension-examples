@@ -42,3 +42,20 @@
     margin-left: 10px;
     color: grey;
 }
+
+.nav-item {
+    margin: 20px;
+}
+
+td.details-control {
+    background: url('../img/datatable/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../img/datatable/details_close.png') no-repeat center center;
+}
+
+#saved-session-content {
+    height: 80vh;
+    overflow-y: scroll;
+}

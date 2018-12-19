@@ -1,8 +1,45 @@
 
     <div id="session-page">
-        <div id="window-list">
-            <div id="tabs">
-                
+            <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="current-session-tab" data-toggle="pill" href="#current-session" role="tab" aria-controls="current-session" aria-selected="true">Current Session</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="saved-session-tab" data-toggle="pill" href="#saved-session" role="tab" aria-controls="saved-session" aria-selected="false">Saved Session</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="saved-session-content">
+                <div class="tab-pane fade show active" id="current-session" role="tabpanel" aria-labelledby="current-session-tab">
+                    <div id="window-list">
+                        <div id="tabs"> </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="saved-session" role="tabpanel" aria-labelledby="saved-session-tab">
+                    <div class="container">
+                            <div class="row">
+                                <table id="saved-session-table" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                            </div>
+                        </div>	
+                </div>
             </div>
-        </div>
+        
     </div>
