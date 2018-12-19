@@ -74,6 +74,7 @@ function initCurrentSessionData() {
 
 function initSavedSessionTable() {
     var table = $('#saved-session-table').DataTable( {
+        //"dom": "Bfrtip",
         "ajax": "../objects.txt",
         "columns": [
             {
@@ -82,11 +83,13 @@ function initSavedSessionTable() {
                 "data":           null,
                 "defaultContent": ''
             },
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "salary" }
+            { "data": "session-name" },
+            { "data": "saved-at" },
+            { "data": "tabs" }
         ],
+        "columnDefs": [
+            { "visible": false,  "targets": [ 3 ] }
+         ],
         "order": [[1, 'asc']]
     } );
      
@@ -102,27 +105,25 @@ function initSavedSessionTable() {
         }
         else {
             // Open this row
-            row.child( format(row.data()) ).show();
+            var tabInfo = showTabInfo(row.data().tabs);
+            if (tabInfo !== undefined) {
+                row.child( tabInfo ).show();
+            }
             tr.addClass('shown');
         }
     } );
 };
 
-function format ( d ) {
+function showTabInfo ( tabs ) {
     // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
-}
+   
+    var dataToReturn ='';
+    tabs.forEach(function (tab) {
 
+        dataToReturn += '<div>';
+        dataToReturn += '<img class="tab-image" src="' + tab.favIconUrl+ '"></img>'
+        dataToReturn += '<a class="tab-anchor" target="_blank" href="' + tab.url + '" title="' + tab.url + '">' + tab.title + '</<>'
+        dataToReturn += "</div>";
+    });
+    return dataToReturn;
+}

@@ -10,6 +10,9 @@
             </ul>
             <div class="tab-content" id="saved-session-content">
                 <div class="tab-pane fade show active" id="current-session" role="tabpanel" aria-labelledby="current-session-tab">
+                    <button type="button" id="save_session" class="btn btn-primary pull-right save-session-btn" data-toggle="modal" data-target="#saveSessionModalCenter">
+                            Save Session
+                    </button>
                     <div id="window-list">
                         <div id="tabs"> </div>
                     </div>
@@ -21,19 +24,17 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Salary</th>
+                                                <th>Session Name</th>
+                                                <th>Saved at</th>
+                                                <th>Tab Info</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th></th>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Salary</th>
+                                                <th>Session Name</th>
+                                                <th>Saved at</th>
+                                                <th>Tab Info</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -43,3 +44,29 @@
             </div>
         
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="saveSessionModalCenter" tabindex="-1" role="dialog" aria-labelledby="saveSessionModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="saveSessionModalLongTitle">Save Current Session</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="session-name" class="col-form-label">Session Name:</label>
+                    <input type="text" class="form-control" id="session-name">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+        </div>
+        </div>
+    </div>                      
+</div>

@@ -59,3 +59,7 @@ tr.shown td.details-control {
     height: 80vh;
     overflow-y: scroll;
 }
+
+.save-session-btn {
+    margin-right: 10px;
+}
