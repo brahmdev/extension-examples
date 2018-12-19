@@ -9,6 +9,12 @@
     width: -webkit-fill-available
 }
 
+.window {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .tab {
     padding: 10px;
     font-size: 14px;
@@ -23,7 +29,16 @@
     margin-right: 10px;
 }
 
+.window-image {
+    margin-right: 10px;
+}
+
 .tab-anchor {
     word-wrap: break-word;
     width: 50px;
+}
+
+.tab-count {
+    margin-left: 10px;
+    color: grey;
 }

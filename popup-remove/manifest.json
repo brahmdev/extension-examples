@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Popup Remove",
+    "version": "0.0.1",
+    "description": "Removes the pop up from page",      
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [ {
+        "js": [ "js/content_script.js" ],
+        "matches": [ "https://www.thelocal.se/*" ],
+        "run_at": "document_end"
+     } ]
+}
