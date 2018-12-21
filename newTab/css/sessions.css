@@ -63,3 +63,9 @@ tr.shown td.details-control {
 .save-session-btn {
     margin-right: 10px;
 }
+
+.child-row-tab-info {
+    padding-left: 150px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

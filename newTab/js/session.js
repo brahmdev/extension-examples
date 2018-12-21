@@ -120,7 +120,7 @@ function showTabInfo ( tabs ) {
     var dataToReturn ='';
     tabs.forEach(function (tab) {
 
-        dataToReturn += '<div>';
+        dataToReturn += '<div class="child-row-tab-info">';
         dataToReturn += '<img class="tab-image" src="' + tab.favIconUrl+ '"></img>'
         dataToReturn += '<a class="tab-anchor" target="_blank" href="' + tab.url + '" title="' + tab.url + '">' + tab.title + '</<>'
         dataToReturn += "</div>";

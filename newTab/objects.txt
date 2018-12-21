@@ -2,7 +2,7 @@
   "data": [
     {
       "DT_RowId": "1",
-      "session-name": "Basic 1",
+      "session-name": "Inspector",
       "saved-at": "Wed 19, Dec 2018",
       "tabs": [
          {
@@ -16,14 +16,33 @@
            "url": "https://dev.inspector.swagger.io/builder",
            "title": "Swagger Inspector",
            "favIconUrl": "https://smartbear.com/SmartBear/media/images/Logos/Products/Swagger-Icon.png"
+         },
+         {
+           "id": 3,
+           "url": "https://github.com/SmartBear/inspector-frontend-proxy",
+           "title": "SmartBear/inspector-frontend-proxy",
+           "favIconUrl": "https://github.githubassets.com/favicon.ico"
+         },
+         {
+           "id": 4,
+           "url": "chrome://extensions/",
+           "title": "Extensions",
+           "favIconUrl": "img/default.png"
          }
       ]
     },
     {
       "DT_RowId": "2",
-      "session-name": "Basic 2",
-      "saved-at": "Wed 19, Dec 2018",
-      "tabs": []
+      "session-name": "Personal",
+      "saved-at": "Thu 20, Dec 2018",
+      "tabs": [
+        {
+           "id": 1,
+           "url": "https://drive.google.com/drive/u/0/my-drive",
+           "title": "My Drive - Google Drive",
+           "favIconUrl": "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
+         }
+      ]
     }
   ]
 }
