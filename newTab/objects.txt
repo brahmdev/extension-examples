@@ -1,48 +1,87 @@
 {
-  "data": [
+	"data": [{
+			"DT_RowId": "1",
+			"session-name": "Inspector",
+			"saved-at": "Wed 19, Dec 2018",
+			"windows": [{
+					"name": "window1",
+					"tabs": [{
+							"id": 1,
+							"url": "https://outlook.office.com/owa/?realm=smartbear.com&exsvurl=1&ll-cc=1033&modurl=0",
+							"title": "Micorsoft outlook 365",
+							"favIconUrl": "https://outlook.office.com/owa/favicon.ico"
+						},
+						{
+							"id": 2,
+							"url": "https://inspector.swagger.io/builder",
+							"title": "Swagger Inspector",
+							"favIconUrl": "https://smartbear.com/SmartBear/media/images/Logos/Products/Swagger-Icon.png"
+						},
+						{
+							"id": 3,
+							"url": "https://github.com/SmartBear/inspector-frontend-proxy",
+							"title": "SmartBear/inspector-frontend-proxy",
+							"favIconUrl": "https://github.githubassets.com/favicon.ico"
+						},
+						{
+							"id": 4,
+							"url": "chrome://extensions/",
+							"title": "Extensions",
+							"favIconUrl": "img/default.png"
+						}
+					]
+				},
+				{
+					"name": "window2",
+					"tabs": [{
+							"id": 1,
+							"url": "https://github.com/SmartBear/inspector-frontend-proxy",
+							"title": "SmartBear/inspector-frontend-proxy",
+							"favIconUrl": "https://github.githubassets.com/favicon.ico"
+						},
+						{
+							"id": 2,
+							"url": "chrome://extensions/",
+							"title": "Extensions",
+							"favIconUrl": "img/default.png"
+						}
+					]
+				}
+			]
+		},
     {
-      "DT_RowId": "1",
-      "session-name": "Inspector",
-      "saved-at": "Wed 19, Dec 2018",
-      "tabs": [
-         {
-           "id": 1,
-           "url": "https://outlook.office.com/owa/?realm=smartbear.com&exsvurl=1&ll-cc=1033&modurl=0",
-           "title": "Micorsoft outlook 365",
-           "favIconUrl": "https://outlook.office.com/owa/favicon.ico"
-         },
-         {
-           "id": 2,
-           "url": "https://dev.inspector.swagger.io/builder",
-           "title": "Swagger Inspector",
-           "favIconUrl": "https://smartbear.com/SmartBear/media/images/Logos/Products/Swagger-Icon.png"
-         },
-         {
-           "id": 3,
-           "url": "https://github.com/SmartBear/inspector-frontend-proxy",
-           "title": "SmartBear/inspector-frontend-proxy",
-           "favIconUrl": "https://github.githubassets.com/favicon.ico"
-         },
-         {
-           "id": 4,
-           "url": "chrome://extensions/",
-           "title": "Extensions",
-           "favIconUrl": "img/default.png"
-         }
-      ]
-    },
-    {
-      "DT_RowId": "2",
-      "session-name": "Personal",
-      "saved-at": "Thu 20, Dec 2018",
-      "tabs": [
-        {
-           "id": 1,
-           "url": "https://drive.google.com/drive/u/0/my-drive",
-           "title": "My Drive - Google Drive",
-           "favIconUrl": "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico"
-         }
-      ]
-    }
-  ]
+			"DT_RowId": "2",
+			"session-name": "Saved Session 2",
+			"saved-at": "Wed 19, Dec 2018",
+			"windows": [{
+					"name": "window-1",
+					"tabs": [{
+							"id": 1,
+							"url": "https://outlook.office.com/owa/?realm=smartbear.com&exsvurl=1&ll-cc=1033&modurl=0",
+							"title": "Micorsoft outlook 365",
+							"favIconUrl": "https://outlook.office.com/owa/favicon.ico"
+						},
+						{
+							"id": 2,
+							"url": "https://inspector.swagger.io/builder",
+							"title": "Swagger Inspector",
+							"favIconUrl": "https://smartbear.com/SmartBear/media/images/Logos/Products/Swagger-Icon.png"
+						},
+						{
+							"id": 3,
+							"url": "https://github.com/SmartBear/inspector-frontend-proxy",
+							"title": "SmartBear/inspector-frontend-proxy",
+							"favIconUrl": "https://github.githubassets.com/favicon.ico"
+						},
+						{
+							"id": 4,
+							"url": "chrome://extensions/",
+							"title": "Extensions",
+							"favIconUrl": "img/default.png"
+						}
+					]
+				}
+			]
+		}
+	]
 }

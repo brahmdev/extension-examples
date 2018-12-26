@@ -1,3 +1,4 @@
+var sessionData = '';
 
 function populateSessionData() {
 
@@ -37,7 +38,6 @@ function initCurrentSessionData() {
 			div.appendChild(windowTabCountSpan);
 
 			windowDiv.appendChild(div);
-
 
 			window.tabs.forEach(function (tab) {
 				console.log(tab.favIconUrl);
@@ -85,7 +85,7 @@ function initSavedSessionTable() {
             },
             { "data": "session-name" },
             { "data": "saved-at" },
-            { "data": "tabs" }
+            { "data": "windows" }
         ],
         "columnDefs": [
             { "visible": false,  "targets": [ 3 ] }
@@ -105,7 +105,7 @@ function initSavedSessionTable() {
         }
         else {
             // Open this row
-            var tabInfo = showTabInfo(row.data().tabs);
+            var tabInfo = showTabInfo(row.data().windows);
             if (tabInfo !== undefined) {
                 row.child( tabInfo ).show();
             }
@@ -114,16 +114,19 @@ function initSavedSessionTable() {
     } );
 };
 
-function showTabInfo ( tabs ) {
+function showTabInfo ( windows ) {
     // `d` is the original data object for the row
    
     var dataToReturn ='';
-    tabs.forEach(function (tab) {
-
-        dataToReturn += '<div class="child-row-tab-info">';
-        dataToReturn += '<img class="tab-image" src="' + tab.favIconUrl+ '"></img>'
-        dataToReturn += '<a class="tab-anchor" target="_blank" href="' + tab.url + '" title="' + tab.url + '">' + tab.title + '</<>'
-        dataToReturn += "</div>";
+    windows.forEach(function (window) {
+        dataToReturn += '<div class="window window-saved-session"><img class="window-image" src="../img/win.png"></img><span>' + window.name + '</span></div>';
+       
+        window.tabs.forEach(function (tab) {
+            dataToReturn += '<div class="child-row-tab-info">';
+            dataToReturn += '<img class="tab-image" src="' + tab.favIconUrl+ '"></img>'
+            dataToReturn += '<a class="tab-anchor" target="_blank" href="' + tab.url + '" title="' + tab.url + '">' + tab.title + '</<>'
+            dataToReturn += "</div>";
+        });
     });
     return dataToReturn;
 }

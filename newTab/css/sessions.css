@@ -65,7 +65,11 @@ tr.shown td.details-control {
 }
 
 .child-row-tab-info {
-    padding-left: 150px;
+    padding-left: 80px;
     padding-bottom: 10px;
     padding-top: 10px;
+}
+
+.window-saved-session{
+    margin-left: 50px;
 }
