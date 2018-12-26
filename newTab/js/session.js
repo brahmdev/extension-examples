@@ -1,19 +1,58 @@
 var sessionData = '';
+var windowsArray = [];
 
 function populateSessionData() {
 
     if ( ! $.fn.DataTable.isDataTable( '#saved-session-table' ) ) {
         initCurrentSessionData();
-        initSavedSessionTable();
+        //initSavedSessionTable();
     }   
+
+     // get the userData chromeStorage entry
+     chrome.storage.local.get(['savedSessionData'], function(result) {
+        savedSessionData = $.isEmptyObject(result) ? initSavedSessionTable(result) : initSavedSessionTable(result.savedSessionData);
+        console.log("stored value is: ", savedSessionData);            
+    });
+
+    $('#save-session').click(function () {
+        var sessionData = {};
+        var savedSessionData;
+        sessionData.DT_RowId = new Date().toISOString();
+        sessionData.session_name = $("#session-name").val();
+        sessionData.saved_at = new Date().toISOString();
+        sessionData.windows = windowsArray;
+        console.log(sessionData);
+
+        chrome.storage.local.get(['savedSessionData'], function(result) {
+            console.log("store value is: ", result);
+            if (result && result.savedSessionData && result.savedSessionData.length > 0) {
+                result.savedSessionData.push(sessionData);
+                savedSessionData = result.savedSessionData;
+            } else {
+                savedSessionData = [];
+                savedSessionData.push(sessionData);
+            }
+            chrome.storage.local.set({savedSessionData}, function() {
+                console.log('Value is set to ' + JSON.stringify(savedSessionData));
+                $('#saveSessionModalCenter').modal('hide');
+                var table = $('#saved-session-table').DataTable();
+                //table.ajax.reload();
+                table.clear().rows.add(savedSessionData).draw();
+            });
+        // initRuleTable(result);
+            
+        });
+    });
 }
 
 function initCurrentSessionData() {
 	chrome.windows.getAll({
 		populate: true
 	}, function (windows) {
-		console.log("window value is: ", windows);
+        
 		windows.forEach(function (window) {
+
+            var tabsArray = []
 
 			var windowDiv = document.createElement("div");
 
@@ -21,7 +60,7 @@ function initCurrentSessionData() {
 			div.id = "div_" + window.id;
 			div.className = "window";
 
-			var windowTextNode = document.createTextNode('window');
+			var windowTextNode = document.createTextNode('window_' + window.id);
 
 			var windowTabCountSpan = document.createElement("span");
 			windowTabCountSpan.className = 'tab-count';
@@ -37,10 +76,12 @@ function initCurrentSessionData() {
 			div.appendChild(windowTextNode);
 			div.appendChild(windowTabCountSpan);
 
+            var windowObject = {};
+            windowObject.name = "window_" + window.id;
+
 			windowDiv.appendChild(div);
 
 			window.tabs.forEach(function (tab) {
-				console.log(tab.favIconUrl);
 				var div = document.createElement("div");
 				div.id = "div_" + tab.id;
 				div.className = "tab";
@@ -61,21 +102,29 @@ function initCurrentSessionData() {
 				div.appendChild(img);
 				div.appendChild(anchor);
 
-				//$('#tabs').append(div);
+                //$('#tabs').append(div);
+                var tabObject = {};
+                tabObject.id = tab.id;
+                tabObject.url = tab.url;
+                tabObject.title = tab.title;
+                tabObject.favIconUrl = tab.favIconUrl;
+
+                tabsArray.push(tabObject);
 				windowDiv.appendChild(div);
 			});
-
+            windowObject.tabs = tabsArray;
+            windowsArray.push(windowObject);
 			$('#window-list').append(windowDiv);
 		});
-
     });
-    
 }
 
-function initSavedSessionTable() {
+function initSavedSessionTable(savedSessionData) {
     var table = $('#saved-session-table').DataTable( {
-        //"dom": "Bfrtip",
-        "ajax": "../objects.txt",
+        //"ajax": "../objects.txt",
+        data: $.map( savedSessionData, function (value, key) {
+            return value;
+        } ),
         "columns": [
             {
                 "className":      'details-control',
@@ -83,14 +132,15 @@ function initSavedSessionTable() {
                 "data":           null,
                 "defaultContent": ''
             },
-            { "data": "session-name" },
-            { "data": "saved-at" },
+            { "data": "session_name" },
+            { "data": "saved_at" },
             { "data": "windows" }
         ],
         "columnDefs": [
             { "visible": false,  "targets": [ 3 ] }
          ],
-        "order": [[1, 'asc']]
+        "order": [[1, 'asc']],
+        "bDestroy": true,
     } );
      
     // Add event listener for opening and closing details
@@ -123,7 +173,11 @@ function showTabInfo ( windows ) {
        
         window.tabs.forEach(function (tab) {
             dataToReturn += '<div class="child-row-tab-info">';
-            dataToReturn += '<img class="tab-image" src="' + tab.favIconUrl+ '"></img>'
+            var favIconUrl = '../img/default.png';
+            if (tab.favIconUrl && (tab.favIconUrl !== '' || tab.favIconUrl != null)) {
+                favIconUrl = tab.favIconUrl;
+            }
+            dataToReturn += '<img class="tab-image" src="' + favIconUrl+ '"></img>'
             dataToReturn += '<a class="tab-anchor" target="_blank" href="' + tab.url + '" title="' + tab.url + '">' + tab.title + '</<>'
             dataToReturn += "</div>";
         });

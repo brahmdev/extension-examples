@@ -1,5 +1,5 @@
 // get the userData chromeStorage entry
-chrome.storage.sync.get(function(result) {
+chrome.storage.local.get(function(result) {
     applyRules(result.userData);
 });
 

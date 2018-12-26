@@ -1,8 +1,8 @@
 {
 	"data": [{
 			"DT_RowId": "1",
-			"session-name": "Inspector",
-			"saved-at": "Wed 19, Dec 2018",
+			"session_name": "Inspector",
+			"saved_at": "Wed 19, Dec 2018",
 			"windows": [{
 					"name": "window1",
 					"tabs": [{
@@ -51,8 +51,8 @@
 		},
     {
 			"DT_RowId": "2",
-			"session-name": "Saved Session 2",
-			"saved-at": "Wed 19, Dec 2018",
+			"session_name": "Saved Session 2",
+			"saved_at": "Wed 19, Dec 2018",
 			"windows": [{
 					"name": "window-1",
 					"tabs": [{

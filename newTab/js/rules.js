@@ -31,7 +31,7 @@ function populateRulesData() {
         var userData = {};
     
         // get the userData chromeStorage entry
-        chrome.storage.sync.get(function(result) {
+        chrome.storage.local.get(function(result) {
             userData = $.isEmptyObject(result) ? initRuleTable(result) : initRuleTable(result.userData);
             console.log("store value is: ", userData);            
         });
@@ -82,7 +82,7 @@ function initRuleTable(userData) {
                 $.each( d.data, function (id) {
                     delete userData[ id ];
                 } );
-                chrome.storage.sync.set({userData}, function() {
+                chrome.storage.local.set({userData}, function() {
                     console.log('Value is set to ' + JSON.stringify(userData));
                 });
             }
@@ -160,7 +160,7 @@ function assignValues(rowData) {
 }
 
 function setValueInStorage(userData) {
-    chrome.storage.sync.get(['userData'], function(result) {
+    chrome.storage.local.get(['userData'], function(result) {
         if ($.isEmptyObject(result)) {
             userData = userData;
         } else {
@@ -174,7 +174,7 @@ function setValueInStorage(userData) {
         
         //userData = $.isEmptyObject(result) ? userData : (result.userData[userData.DT_RowId] = userData);
         console.log("store value is: ", result);
-        chrome.storage.sync.set({userData}, function() {
+        chrome.storage.local.set({userData}, function() {
             console.log('Value is set to ' + JSON.stringify(userData));
         });
     // initRuleTable(result);
